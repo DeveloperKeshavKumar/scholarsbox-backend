@@ -170,7 +170,10 @@ exports.updateProject = async (req, res) => {
     project.title = title;
     project.description = description;
     project.tags = tags;
-    project.url = url;
+    if (url !== null && url !== undefined && url !== '') {
+      console.log("Url before updating in DB>>>", url);
+      project.url = url;
+    }
 
     // Update project files if new files are provided
     if (filesUploaded.length > 0) {
